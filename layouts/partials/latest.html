@@ -1,0 +1,8 @@
+<div class="latest_list_container">
+    <ul>
+        <!--<li>Latest</li>-->
+        {{ range first 10 .Site.Pages }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</div>

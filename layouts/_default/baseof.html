@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {{ block "title" . }}
+                {{ if .Page.IsHome }}
+                    {{ .Site.Title }}
+                {{ else }}
+                    {{ .Page.Title }} - {{ .Site.Title }}
+                {{ end }}
+            {{ end }}
+        </title>
+        {{ partial "meta.html" . }}
+    </head>
+    <body>
+        {{ if not .Site.BuildDrafts }}
+        {{ template "_internal/google_analytics_async.html" . }}
+        {{ end }}
+
+        <div class="header">
+            {{ partial "header.html" . }}
+        </div>
+
+        <div class="main">
+            <div class="toc-area">
+                {{ .TableOfContents }}
+            </div>
+            <div class="main-area">
+                {{ block "main" . }}{{ end }}
+            </div>
+            <div class="side-area">
+                {{ partial "profile.html" . }}
+                {{ partial "latest.html" . }}
+            </div>
+        </div>
+
+        <div class="footer">
+            {{ partial "footer.html" . }}
+        </div>
+
+        <script src="{{ .Site.BaseURL }}js/cheep.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var ms = document.querySelectorAll(".lastmod")
+                for (var i = 0; i < ms.length; i++) {
+                    var m = ms[i];
+                    replaceSince(m);
+                }
+                })
+        </script>
+
+        <!--
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/darcula.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        -->
+    </body>
+</html>
