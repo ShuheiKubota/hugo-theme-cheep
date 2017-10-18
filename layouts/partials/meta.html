@@ -1,0 +1,12 @@
+
+{{ "<!-- META -->" | safeHTML }}
+{{ .Hugo.Generator }}
+<meta name="copyright" content="{{ .Site.Copyright }}">
+<link rel="alternate" type="application/atom+xml" href="{{ .Site.RSSLink }}" />
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+<link href="{{ .Site.BaseURL }}css/cheep.css" rel="stylesheet">
+<link href="{{ .Site.BaseURL }}css/style.css" rel="stylesheet">
+<link href="{{ .Site.BaseURL }}css/syntax.css" rel="stylesheet">
+{{ "<!-- META -->" | safeHTML }}

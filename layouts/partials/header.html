@@ -1,0 +1,9 @@
+
+{{ "<!-- HEADER -->" | safeHTML }}
+<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+
+{{- if eq .Kind "page" -}}
+{{- $sec := (.Site.GetPage "section" .Section) -}}
+&nbsp;&raquo; <a href="{{ $sec.Permalink }}">{{ $sec.Title }}</a>
+{{ end }}
+{{ "<!-- HEADER -->" | safeHTML }}

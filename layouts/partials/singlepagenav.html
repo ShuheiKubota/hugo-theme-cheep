@@ -1,0 +1,17 @@
+
+{{ "<!-- PAGE POINTERS -->" | safeHTML }}
+{{ if (or .Page.PrevInSection .Page.NextInSection) }}
+<div class="single_pagenav">
+    <div class="single_pagenav_prev">
+        {{ if .Page.PrevInSection }}
+        <a href="{{ .Page.PrevInSection.Permalink }}">&laquo; {{ .Page.PrevInSection.Title }} &laquo;</a>
+        {{ end }}
+        </div>
+    <div class="single_pagenav_next">
+        {{ if .Page.NextInSection }}
+        <a href="{{ .Page.NextInSection.Permalink }}">&raquo; {{ .Page.NextInSection.Title }} &raquo;</a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+{{ "<!-- PAGE POINTERS -->" | safeHTML }}

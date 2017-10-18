@@ -1,0 +1,13 @@
+
+{{ "<!-- PROFILE -->" | safeHTML }}
+<div class="profile">
+    {{ if .Site.Params.profileImage }}
+    <img src="{{ .Site.BaseURL }}{{ .Site.Params.profileImage }}" />
+    {{ end }}
+    <a href="https://twitter.com/{{ .Site.Params.profileTwitter }}" target="_blank">@{{ .Site.Params.profileTwitter }}</a>
+
+    <p class="description">
+        {{ .Site.Params.profileDescription }}
+    </p>
+</div>
+{{ "<!-- PROFILE -->" | safeHTML }}
