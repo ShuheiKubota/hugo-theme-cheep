@@ -22,7 +22,7 @@ function replaceSince(spanElem) {
         spanElem.firstChild.data = dym + " months ago";
         return
     } else if (dym > 0) {
-        spanElem.firstChild.data = dym + " years ago";
+        spanElem.firstChild.data = Math.trunc(dym / 12) + " years ago";
         return
     }
 
