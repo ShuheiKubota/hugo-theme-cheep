@@ -2,7 +2,13 @@
     <ul>
         <!--<li>Latest</li>-->
         {{ range first 10 .Site.Pages }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        <li><a href="{{ .Permalink }}">
+                {{- if .IsPage -}}
+                <span style="display:inline-block; text-decoration:none">📄 </span>
+                {{- else -}}
+                <span style="display:inline-block; text-decoration:none">📂 </span>
+                {{- end -}}
+                {{ .Title }}</a></li>
         {{ end }}
     </ul>
 </div>
