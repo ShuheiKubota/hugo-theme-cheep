@@ -58,27 +58,39 @@
 }
 
 .main-area h1 {
-    padding: 5px;
-    background: rgb(225,225,225);
-    border-left: solid 0.5ex gray;
-    border-bottom: solid thin rgb(200,200,200);
-    border-right: solid thin rgb(200,200,200);
+    border-bottom: double 5px #aaaaaa;
+    margin-bottom: 1em;
 }
 
 .main-area h2 {
-    padding: 5px;
-    background: rgb(225,225,225);
-    /*border-left: solid 0.5ex gray;*/
-    border-bottom: solid thin rgb(200,200,200);
-    border-right: solid thin rgb(200,200,200);
+  padding: 1ex;
+  border: solid thin #aaaaaa;
+  border-left: double 7px #aaaaaa;
+  border-right: double 7px #aaaaaa;
 }
 
 .main-area h3 {
-    padding: 5px;
-    background: rgb(225,225,225);
-    /*border-left: solid 0.5ex gray;*/
-    /*border-bottom: solid thin rgb(200,200,200);*/
-    /*border-right: solid thin rgb(200,200,200);*/
+    position: relative;
+    padding: 0.5ex;
+    padding-left: 1ex;
+    background: #dedede;
+}
+.main-area h3:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #dedede;
+    width: 0;
+    height: 0;
+}
+
+.main-area h4:before {
+    content: '\02500\02500\00a0';
+}
+.main-area h4:after {
+    content: '\00a0\02500\02500';
 }
 
 p ~ h1, p ~ h2, p ~ h3 {
