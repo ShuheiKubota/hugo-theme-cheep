@@ -4,9 +4,9 @@
         {{ range first 10 .Site.Pages }}
         <li><a href="{{ .Permalink }}">
                 {{- if .IsPage -}}
-                <span style="display:inline-block; text-decoration:none">📄 </span>
+                <span style="display:inline-block; text-decoration:none">{{ default "📄" (index $.Site.Params "cheep_page_emoji")}} </span>
                 {{- else -}}
-                <span style="display:inline-block; text-decoration:none">📂 </span>
+                <span style="display:inline-block; text-decoration:none">{{ default "📂" (index $.Site.Params "cheep_list_emoji")}} </span>
                 {{- end -}}
                 {{ .Title }}</a></li>
         {{ end }}
