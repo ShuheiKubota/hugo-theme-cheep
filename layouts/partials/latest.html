@@ -2,13 +2,13 @@
     <ul>
         <!--<li>Latest</li>-->
         {{ range first 10 .Site.Pages }}
-        <li><a href="{{ .Permalink }}">
+        <a href="{{ .Permalink }}"><li>
                 {{- if .IsPage -}}
-                <span style="display:inline-block; text-decoration:none">{{ default "📄" (index $.Site.Params "cheep_page_emoji")}} </span>
+                <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
                 {{- else -}}
-                <span style="display:inline-block; text-decoration:none">{{ default "📂" (index $.Site.Params "cheep_list_emoji")}} </span>
+                <span style="display:inline-block; text-decoration:none">{{ default "📂" $.Site.Params.iconLatestList }} </span>
                 {{- end -}}
-                {{ .Title }}</a></li>
+                {{ .Title }}</li></a>
         {{ end }}
     </ul>
 </div>
