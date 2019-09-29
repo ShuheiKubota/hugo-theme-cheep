@@ -1,13 +1,15 @@
 
 {{ "<!-- PROFILE -->" | safeHTML }}
 <div class="profile">
-    {{ if .Site.Params.profileImage }}
-    <img src="{{ .Site.BaseURL }}{{ .Site.Params.profileImage }}" />
-    {{ end }}
-    <a href="https://twitter.com/{{ .Site.Params.profileTwitter }}" target="_blank">@{{ .Site.Params.profileTwitter }}</a>
+    {{- with $.Site.Params.profileImage -}}
+    <img src="{{ $.Site.BaseURL }}{{ . }}" />
+    {{- end -}}
+    {{- with $.Site.Params.profileTwitter -}}
+    <a href="https://twitter.com/{{ . }}" target="_blank">@{{ . }}</a>
+    {{- end -}}
 
     <p class="description">
-        {{ .Site.Params.profileDescription }}
+    {{ $.Site.Params.profileDescription }}
     </p>
 </div>
 {{ "<!-- PROFILE -->" | safeHTML }}
