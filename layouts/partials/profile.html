@@ -7,6 +7,9 @@
     {{- with $.Site.Params.profileTwitter -}}
     <a href="https://twitter.com/{{ . }}" target="_blank">@{{ . }}</a>
     {{- end -}}
+    {{- with $.Site.Params.profileHTML -}}
+    {{ . | safeHTML }}
+    {{- end -}}
 
     <p class="description">
     {{ $.Site.Params.profileDescription }}
