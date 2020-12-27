@@ -299,10 +299,11 @@ hr.listsep {
         color: rgb(250,250,250);
     }
     .header {
-        background-color: rgb(160,160,160);
+        background-color: black;
+        color: white;
     }
     .header * {
-        color: black;
+        color: white;
     }
     .main {
         background-color: rgb(25,25,25);
