@@ -1,0 +1,9 @@
+{{ if .Site.Taxonomies.tags }}
+<div class="tags_container">
+    <ul>
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        <li class="tag"><a href="{{ "/tags/" | relURL }}{{ .Name | urlize }}">{{ .Name }}<span class="tag_count">{{ .Count }}</span></a></li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
