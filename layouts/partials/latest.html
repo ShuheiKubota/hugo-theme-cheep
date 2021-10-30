@@ -1,6 +1,12 @@
 <div class="latest_list_container">
     <ul>
-        <!--<li>Latest</li>-->
+        {{- if (default true $.Site.Params.latestOnlyPage) -}}
+        {{ range first 10 (sort (where .Site.Pages "IsPage" true) "Lastmod" "desc") }}
+        <a href="{{ .Permalink }}"><li>
+                <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
+                {{ .Title }}</li></a>
+        {{ end }}
+        {{- else -}}
         {{ range first 10 (sort .Site.Pages "Lastmod" "desc") }}
         <a href="{{ .Permalink }}"><li>
                 {{- if .IsPage -}}
@@ -10,5 +16,6 @@
                 {{- end -}}
                 {{ .Title }}</li></a>
         {{ end }}
+        {{- end -}}
     </ul>
 </div>
