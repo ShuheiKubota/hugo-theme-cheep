@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url("/css/syntax.css");
+@import url("/css/syntax_dark.css") (prefers-color-scheme: dark);
 :root {
   --bgcolor: #fafafa;
   --color: #191919;
@@ -19,6 +21,7 @@
   --latest_summary_color: gray;
   --tag_color: #ededed;
   --tag_marker_color: #bababa;
+  --code_hl: #fbfbbc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,6 +45,7 @@
     --latest_summary_color: lightgray;
     --tag_color: #3f3f3f;
     --tag_marker_color: #999999;
+    --code_hl: #535313;
   }
 }
 @media (min-width: 1024px) {
@@ -98,6 +102,13 @@
 .header * {
   color: var(--header_color);
   text-decoration: none;
+}
+
+.chroma .hl {
+  background-color: var(--code_hl);
+}
+.chroma .hl .lnt {
+  font-weight: bold;
 }
 
 .footer {
