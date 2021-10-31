@@ -1,6 +1,4 @@
 @charset "UTF-8";
-@import url("/css/syntax.css");
-@import url("/css/syntax_dark.css") (prefers-color-scheme: dark);
 :root {
   --bgcolor: #fafafa;
   --color: #191919;
@@ -104,13 +102,6 @@
   text-decoration: none;
 }
 
-.chroma .hl {
-  background-color: var(--code_hl);
-}
-.chroma .hl .lnt {
-  font-weight: bold;
-}
-
 .footer {
   text-align: right;
   background-color: var(--footer_bgcolor);
@@ -183,14 +174,16 @@ p ~ h1, p ~ h2, p ~ h3 {
   margin-left: 2em;
 }
 
-code .ln {
-  border-right: solid thin darkgray;
-  color: darkgray;
-}
-
 /* modify Hugo gen */
 li > p {
   margin: 0;
+}
+
+.chroma span.hl {
+  background-color: var(--code_hl);
+}
+.chroma span.hl .lnt {
+  font-weight: bold;
 }
 
 /*****/

@@ -50,6 +50,16 @@
                     var m = ms[i];
                     replaceSince(m);
                 }
+
+                var css=document.createElement("link");
+                css.setAttribute("rel","stylesheet");
+                css.setAttribute("type","text/css");
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    css.setAttribute("href","{{ .Site.BaseURL }}css/syntax_dark.css");
+                } else {
+                    css.setAttribute("href","{{ .Site.BaseURL }}css/syntax.css");
+                } 
+                document.getElementsByTagName("head")[0].appendChild(css);
                 })
         </script>
 
