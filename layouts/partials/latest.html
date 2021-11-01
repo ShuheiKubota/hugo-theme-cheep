@@ -1,6 +1,6 @@
 <div class="latest_list_container">
     <ul>
-        {{- if (default true $.Site.Params.latestOnlyPage) -}}
+        {{- if $.Site.Params.latestOnlyPage | default true -}}
         {{ range first 10 (sort (where .Site.Pages "IsPage" true) "Lastmod" "desc") }}
         <a href="{{ .Permalink }}" title={{ .Summary }}><li>
                 <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
