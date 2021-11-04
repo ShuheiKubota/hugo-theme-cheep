@@ -2,6 +2,10 @@
 {{ "<!-- META -->" | safeHTML }}
 {{ hugo.Generator }}
 <meta name="copyright" content="{{ .Site.Copyright }}">
+{{- if .Site.Params.description -}}
+<meta name="description" content="{{ .Site.Params.description }}">
+{{- end -}}
+
 <link rel="alternate" type="application/atom+xml" href="{{ .Site.RSSLink }}" />
 
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
