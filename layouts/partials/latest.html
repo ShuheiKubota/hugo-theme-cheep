@@ -2,7 +2,7 @@
     <ul>
         {{- if $.Site.Params.latestOnlyPage | default true -}}
         {{ range first 10 (sort (where .Site.Pages "IsPage" true) "Lastmod" "desc") }}
-        <a href="{{ .Permalink }}" title={{ .Summary }}><li>
+        <li><a href="{{ .Permalink }}" title={{ .Summary }}>
                 <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
                 {{- .Title -}}
                 {{- if $.Site.Params.latestSummaryLength -}}
@@ -10,11 +10,11 @@
                 {{- substr (replaceRE "<[^>]+>" "" .Summary) 0 $.Site.Params.latestSummaryLength -}}
                 </div>
                 {{- end -}}
-                </li></a>
+                </a></li>
         {{ end }}
         {{- else -}}
         {{ range first 10 (sort .Site.Pages "Lastmod" "desc") }}
-        <a href="{{ .Permalink }}" title={{ .Summary }}><li>
+        <li><a href="{{ .Permalink }}" title={{ .Summary }}>
                 {{- if .IsPage -}}
                 <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
                 {{- else -}}
@@ -26,7 +26,7 @@
                 {{- substr (replaceRE "<[^>]+>" "" .Summary) 0 $.Site.Params.latestSummaryLength -}}
                 </div>
                 {{- end -}}
-                </li></a>
+                </a></li>
         {{ end }}
         {{- end -}}
     </ul>
