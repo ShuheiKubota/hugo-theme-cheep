@@ -41,7 +41,7 @@
             {{ partial "footer.html" . }}
         </div>
 
-        <script src="{{ .Site.BaseURL }}js/cheep.js"></script>
+        {{ partial "minjs.html" (dict "js" "js/cheep.js" "static" "js/cheep.js" "base" .Site.BaseURL) }}
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -51,13 +51,26 @@
                     replaceSince(m);
                 }
 
+                
                 var css=document.createElement("link");
                 css.setAttribute("rel","stylesheet");
                 css.setAttribute("type","text/css");
                 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    {{- $css := resources.Get "css/syntax_dark.css" -}}
+                    {{- if $css -}}
+                    {{- $css := $css | minify | fingerprint }}
+                    css.setAttribute("href","{{ $css.Permalink }}");
+                    {{- else }}
                     css.setAttribute("href","{{ .Site.BaseURL }}css/syntax_dark.css");
+                    {{- end }}
                 } else {
+                    {{- $css := resources.Get "css/syntax.css" -}}
+                    {{- if $css -}}
+                    {{- $css := $css | minify | fingerprint }}
+                    css.setAttribute("href","{{ $css.Permalink }}");
+                    {{- else }}
                     css.setAttribute("href","{{ .Site.BaseURL }}css/syntax.css");
+                    {{- end }}
                 } 
                 document.getElementsByTagName("head")[0].appendChild(css);
                 })

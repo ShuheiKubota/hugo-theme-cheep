@@ -1,0 +1,22 @@
+{{- $break := false -}}
+{{- if .sass -}}
+    {{- $a := resources.Get .sass -}}
+    {{- if $a -}}
+        {{- $a := $a | toCSS | minify | fingerprint }}
+<link href="{{ $a.Permalink }}" rel="stylesheet">
+        {{- $break = true -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if and (not $break) .css -}}
+    {{- $a := resources.Get .css -}}
+    {{- if $a -}}
+        {{ $a := $a | minify | fingerprint }}
+<link href="{{ $a.Permalink }}" rel="stylesheet">
+    {{- $break = true -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if and (not $break) .static -}}
+<link href="{{ .base }}{{ .static }}" rel="stylesheet">
+{{- end -}}

@@ -1,0 +1,14 @@
+{{- $break := false -}}
+{{- if and (not $break) .js -}}
+    {{- $a := resources.Get .js -}}
+    {{- if $a -}}
+        {{ $a := $a | minify | fingerprint }}
+<script src="{{ $a.Permalink }}"></script>
+    {{- $break = true -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if and (not $break) .static -}}
+<script src="{{ .base }}{{ .static }}"></script>
+{{- end -}}
+

@@ -10,6 +10,6 @@
 
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-<link href="{{ .Site.BaseURL }}css/cheep.css" rel="stylesheet">
-<link href="{{ .Site.BaseURL }}css/style.css" rel="stylesheet">
+{{ partial "mincss.html" (dict "sass" "sass/cheep.scss" "css" "css/cheep.css" "static" "css/cheep.css" "base" .Site.BaseURL) }}
+{{ partial "mincss.html" (dict "sass" "sass/style.scss" "css" "css/style.css" "static" "css/style.css" "base" .Site.BaseURL) }}
 {{ "<!-- META -->" | safeHTML }}
