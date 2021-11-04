@@ -1,0 +1,484 @@
+//@import url("/css/syntax.css") not (prefers-color-scheme: dark);
+//@import url("/css/syntax_dark.css") (prefers-color-scheme: dark);
+
+$cheep_white: rgb(250, 250, 250);
+$cheep_black: rgb(45, 45, 45);
+$cheep_dimmed_white: darken($cheep_white, 20%);
+
+$cheep_blue: rgb(25, 113, 255);
+$cheep_red: rgb(255, 75, 0);
+
+$colors: (
+  light: (
+    bgcolor: $cheep_white,
+    color: $cheep_black,
+    link_color: mix($cheep_black, $cheep_blue, 25%),
+    link_hover_color: lighten(mix($cheep_black, $cheep_blue, 25%), 30%),
+    link_visited_color: mix($cheep_black, $cheep_red, 25%),
+    link_visited_hover_color: lighten(mix($cheep_black, $cheep_red, 25%), 10%),
+    header_bgcolor: black,
+    header_color: white,
+    footer_bgcolor: black,
+    footer_color: white,
+    band_bgcolor: $cheep_white,
+    band_color: $cheep_black,
+    side_border_color: rgb(200, 200, 200),
+    main_border_color: rgb(160, 160, 160),
+    main_filled_bgcolor: rgb(220, 220, 220),
+    main_filled_color: $cheep_black,
+    pre_bgcolor: darken($cheep_white, 2%),
+    latest_summary_color: gray,
+    tag_color: darken($cheep_white, 3%),
+    tag_marker_color: darken($cheep_white, 13%),
+    code_hl: mix($cheep_white, rgb(255,255,0),75%),
+  ),
+  dark: (
+    bgcolor: $cheep_black,
+    color: $cheep_dimmed_white,
+    link_color: lighten(mix($cheep_dimmed_white, $cheep_blue, 50%), 5%),
+    link_hover_color: lighten(mix($cheep_dimmed_white, $cheep_blue, 50%), 15%),
+    link_visited_color: darken(mix($cheep_dimmed_white, $cheep_red, 50%), 5%),
+    link_visited_hover_color: lighten(mix($cheep_dimmed_white, $cheep_red, 50%), 5%),
+    header_bgcolor: black,
+    header_color: white,
+    footer_bgcolor: black,
+    footer_color: white,
+    band_bgcolor: $cheep_black,
+    band_color: $cheep_dimmed_white,
+    side_border_color: rgb(160, 160, 160),
+    main_border_color: rgb(160, 160, 160),
+    main_filled_bgcolor: rgb(90, 90, 90),
+    main_filled_color: $cheep_dimmed_white,
+    pre_bgcolor: lighten($cheep_black, 10%),
+    latest_summary_color: lightgray,
+    tag_color: lighten($cheep_black, 5%),
+    tag_marker_color: lighten($cheep_black, 25%),
+    code_hl: mix($cheep_black, rgb(255,255,0),75%),
+  ),
+);
+
+:root {
+  @each $prop, $val in map-get($colors, light) {
+    --#{$prop}: #{$val};
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @each $prop, $val in map-get($colors, dark) {
+      --#{$prop}: #{$val};
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .main {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .toc-area {
+    display: table-cell;
+    width: 10%;
+    min-width: 20em;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .main-area {
+    display: table-cell;
+    width: 30%;
+  }
+
+  .side-area {
+    display: table-cell;
+    width: 10%;
+    min-width: 20em;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .header {
+    padding-left: 25%;
+  }
+}
+
+.main {
+  background-color: var(--bgcolor);
+
+  a {
+    color: var(--link_color);
+    &:hover {
+      color: var(--link_hover_color);
+    }
+    &:visited {
+      color: var(--link_visited_color);
+    }
+    &:visited:hover {
+      color: var(--link_visited_hover_color);
+    }
+  }
+}
+
+.header {
+  background-color: var(--header_bgcolor);
+  color: var(--header_color);
+  font-size: x-large;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  * {
+    color: var(--header_color);
+    text-decoration: none;
+  }
+}
+
+.footer {
+  text-align: right;
+
+  background-color: var(--footer_bgcolor);
+  color: var(--footer_color);
+
+  a {
+    color: var(--header_color);
+    text-decoration: none;
+  }
+}
+
+.main-area {
+    padding-left: 2%;
+    padding-right: 2%;
+
+  h1 {
+    border-bottom: double 5px var(--main_border_color);
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    padding: 1ex;
+    border: solid thin var(--main_border_color);
+    border-left: double 7px var(--main_border_color);
+    border-right: double 7px var(--main_border_color);
+  }
+
+  h3 {
+    position: relative;
+    padding: 0.5ex;
+    padding-left: 1ex;
+    background: var(--main_filled_bgcolor);//#dedede;
+    color: var(--main_filled_color);
+
+    &:after {
+      position: absolute;
+      content: '';
+      top: 100%;
+      left: 30px;
+      border: 15px solid transparent;
+      border-top: 15px solid var(--main_filled_bgcolor);//#dedede;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  h4 {
+    &:before {
+      content: '\02500\02500\00a0';
+    }
+
+    &:after {
+      content: '\00a0\02500\02500';
+    }
+  }
+}
+
+p ~ {
+  h1, h2, h3 {
+    margin-top: 2em;
+  }
+}
+
+.main-area > {
+  p {
+    margin-left: 2em;
+    line-height: 175%;
+  }
+
+  pre {
+    margin-left: 2em;
+    padding: 0.5ex;
+    background: var(--pre_bgcolor); //#F7F7F7;
+    border: solid thin var(--main_border_color);
+  }
+
+  .highlight {
+    margin-left: 2em;
+    padding: 0.5ex;
+    background: var(--pre_bgcolor); //#f7f7f7;
+    border: solid thin var(--main_border_color);
+  }
+}
+
+/* modify hugo gen */
+
+li > p {
+  margin: 0;
+}
+
+.chroma span.lnt {
+  color: var(--color);
+}
+.chroma span.hl {
+  background-color: var(--code_hl);
+
+  .lnt {
+    font-weight: bold;
+  }
+}
+
+/*****/
+
+#TableOfContents {
+  &:before {
+    display: block;
+    padding: 1ex;
+    content: "TOC";
+    font-weight: bold;
+    background-color: var(--band_bgcolor);
+    color: var(--band_color);
+  }
+
+  border: thin solid var(--side_border_color);
+
+  ul {
+    margin: 0;
+
+    ul ul {
+      display: none;
+    }
+  }
+
+  > ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
+}
+
+/* hide h3~ links */
+
+body {
+  margin: 0;
+  color: var(--color);
+}
+
+img {
+  max-width: 100%;
+}
+
+
+.list_container {
+  margin-top: 3em;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding: 0.5em 0;
+  }
+
+  p {
+    padding-left: 2em;
+    padding-top: 1em;
+  }
+}
+
+.single_pagenav {
+  margin-top: 3em;
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    padding: 5px;
+    width: 40%;
+  }
+}
+
+.single_pagenav_prev {
+  text-align: left;
+}
+
+.single_pagenav_next {
+  text-align: right;
+}
+
+.pagination {
+  list-style-type: none;
+  display: flex;
+
+  a {
+    padding: 5px;
+    text-decoration: none;
+  }
+
+  .active {
+    pointer-events: none;
+    font-weight: bold;
+  }
+}
+
+.lastmod {
+  font-size: x-small;
+}
+
+hr.listsep {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  height: 1px;
+  border: none;
+  border-top: 1px var(--side_border_color) dashed;
+}
+
+.profile {
+  border: thin solid var(--side_border_color);
+
+  margin-bottom: 2em;
+  overflow: hidden;
+
+  &:before {
+    display: block;
+    padding: 1ex;
+    content: "Profile";
+    font-weight: bold;
+    background-color: var(--band_bgcolor);
+    color: var(--band_color);
+  }
+
+  img {
+    max-width: 50%;
+    float: left;
+  }
+
+  .description {
+    padding-top: 1em;
+    clear: both;
+  }
+}
+
+.latest_list_container {
+  border: thin solid var(--side_border_color);
+
+  &:before {
+    display: block;
+    padding: 1ex;
+    content: "Latest";
+    font-weight: bold;
+    background-color: var(--band_bgcolor);
+    color: var(--band_color);
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    border-bottom: thin dotted var(--side_border_color);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
+.latest_summary {
+  padding-left: 2em;
+  padding-right: 2em;
+  display: inline-block;
+  text-decoration: none;
+  font-size: small;
+  color: var(--latest_summary_color);
+}
+
+.tags_container {
+  border: thin solid var(--side_border_color);
+  margin-top: 2em;
+
+  &:before {
+    display: block;
+    padding: 1ex;
+    content: "Tags";
+    font-weight: bold;
+    background-color: var(--band_bgcolor);
+    color: var(--band_color);
+  }
+
+  ul {
+    list-style: none;
+    list-style-type: none;
+    padding: 1ex;
+    margin: 0;
+
+    li{
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.tag {
+  display: inline-block;
+
+  border-left: 0.75ex solid var(--tag_marker_color);
+  background-color: var(--tag_color);
+  border-right: thin solid var(--tag_marker_color);
+  border-bottom: thin solid var(--tag_marker_color);
+
+  padding-left: 0.5ex;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 1ex;
+
+  filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.1));
+
+  .tag_count {
+    &:before {
+      content: " [";
+    }
+
+    font-size: x-small;
+
+    &:after {
+      content: "]";
+    }
+  }
+
+  a {
+    text-decoration-line: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  img {
+    filter: brightness(0.85);
+  }
+  img:hover {
+    filter: brightness(1.00);
+  }
+
+  .tag {
+    border-right: thin solid var(--tag_color);
+    border-bottom: thin solid var(--tag_color);
+
+    filter: drop-shadow(1px 2px 3px rgba(0,0,0,1));
+  }
+}
+
+//  vim: set et ft=scss sts=2 sw=2 ts=2 tw=0 : 
