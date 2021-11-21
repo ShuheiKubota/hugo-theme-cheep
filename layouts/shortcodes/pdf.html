@@ -1,0 +1,5 @@
+<object type="application/pdf"
+        data="{{ .Get "data" }}"
+        {{if .Get "width" }}width="{{ .Get "width" }}"{{ else }}width="100%"{{ end }}
+        {{if .Get "height" }}height="{{ .Get "height" }}"{{ else }}height="100%"{{ end }}
+        ></object>
