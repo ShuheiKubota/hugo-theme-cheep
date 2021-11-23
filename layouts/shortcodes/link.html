@@ -1,0 +1,25 @@
+{{/*
+    {{<link url="https://www.google.com" />}}
+    {{<link href="https://www.google.com" />}}
+    {{<link href="https://www.google.com">}}
+        Google
+    {{</link>}}
+*/}}
+
+{{- $url := (default (.Get "href") (.Get "url")) -}}
+{{- $urlobj := $url | relURL | urls.Parse  -}}
+{{- $baseurl := urls.Parse (($.Site.BaseURL) | absURL) -}}
+
+<a href="{{ $url }}"
+   {{- if .Get "class" }} class='{{ .Get "class" }}'{{ end -}}
+   {{- if .Get "title" }} title='{{ .Get "title" }}'{{ end -}}
+   {{- if not (or (eq $urlobj.Host $baseurl.Host) (eq $urlobj.Host "")) }} target='_blank' rel='noopener noreferer'{{ end -}}>
+    {{- if eq .Inner "" }}{{ $url }}{{ else }}{{ .Inner }}{{ end -}}
+
+    {{- if not (or (eq $urlobj.Host $baseurl.Host) (eq $urlobj.Host "")) -}}
+    <span style="position:relative;">{{- "" -}}
+        <span style="">&#x2610;</span>{{- "" -}}
+        <span style="position:absolute; top:-0.3em; left:0.2em">&#x2197;</span>{{- "" -}}
+    </span>
+    {{- end -}}
+</a>
