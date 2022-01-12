@@ -1,0 +1,9 @@
+<div class="folding">
+    <input type="checkbox" id="{{.Get "name"}}" value="" />
+    <label for="{{.Get "name"}}">
+        {{.Get "title"}}
+    </label>
+    <div class="content">
+        {{.Inner | markdownify }}
+    </div>
+</div>

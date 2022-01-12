@@ -220,6 +220,27 @@ p ~ {
   }
 }
 
+.folding {
+  input[type=checkbox] {
+    display: none;
+  }
+  input[type=checkbox] + label::after {
+    content: "[+]"
+  }
+  input[type=checkbox]:checked + label::after {
+    content: "[-]"
+  }
+  .content {
+    transition: all 0.5s;
+    max-height: 0;
+    opacity: 0;
+  }
+  input[type=checkbox]:checked + label + .content {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
 /* modify hugo gen */
 
 li > p {
