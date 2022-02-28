@@ -418,6 +418,13 @@ hr.listsep {
     padding-right: 1em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+
+    .lastmod {
+      padding-left: 1em;
+      display: inline-block;
+      text-decoration: none;
+      color: var(--latest_summary_color);
+    }
   }
 }
 

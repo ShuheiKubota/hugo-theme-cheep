@@ -5,6 +5,7 @@
         <li><a href="{{ .Permalink }}" title={{ .Summary }}>
                 <span style="display:inline-block; text-decoration:none">{{ default "📄" $.Site.Params.iconLatestPage }} </span>
                 {{- .Title -}}
+                <span class="lastmod">{{ .Lastmod.Format "2006-01-02 15:04:05" }}</span>
                 {{- if $.Site.Params.latestSummaryLength -}}
                 <div class="latest_summary">
                 {{- substr (replaceRE "<[^>]+>" "" .Summary) 0 $.Site.Params.latestSummaryLength -}}
@@ -21,6 +22,7 @@
                 <span style="display:inline-block; text-decoration:none">{{ default "📂" $.Site.Params.iconLatestList }} </span>
                 {{- end -}}
                 {{- .Title -}}
+                <span class="lastmod">{{ .Lastmod.Format "2006-01-02 15:04:05" }}</span>
                 {{- if $.Site.Params.latestSummaryLength -}}
                 <div class="latest_summary">
                 {{- substr (replaceRE "<[^>]+>" "" .Summary) 0 $.Site.Params.latestSummaryLength -}}
