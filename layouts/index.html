@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1>{{ .Page.Title }}</h1>
+{{ .Page.Content }}
+
+<div class="list_container">
+    <ul>
+        {{ range (.Paginate .Sections 5).Pages -}}
+            {{ partial "listitem.html" . }}
+        {{ end }}
+    </ul>
+    {{ partial "pagination.html" . }}
+</div>
+{{ end }}
