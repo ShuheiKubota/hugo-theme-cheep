@@ -190,6 +190,21 @@ $colors: (
       content: '\00a0\02500\02500';
     }
   }
+
+  table {
+    border: solid thin var(--main_border_color);
+    border-collapse: collapse;
+  }
+
+  thead th {
+    border-bottom: solid thin var(--main_border_color);
+  }
+
+  td, th {
+    padding-left: 0.5ex;
+    padding-right: 0.5ex;
+    border: dashed thin var(--main_border_color);
+  }
 }
 
 p ~ {
