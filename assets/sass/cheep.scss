@@ -200,9 +200,14 @@ $colors: (
     border-bottom: solid thin var(--main_border_color);
   }
 
-  td, th {
+  th {
     padding-left: 0.5ex;
     padding-right: 0.5ex;
+    border: dashed thin var(--main_border_color);
+  }
+
+  td {
+    padding: 1ex;
     border: dashed thin var(--main_border_color);
   }
 }
