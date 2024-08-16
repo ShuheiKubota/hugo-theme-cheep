@@ -1,0 +1,19 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $siteu := urls.Parse (.Page.Site.BaseURL | absURL) -}}
+{{- $outer := (and $u.IsAbs (not (eq $u.Host $siteu.Host)) ) -}}
+
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- if $outer }} target="_blank" rel="external noopener noreferer"{{ end -}}
+>
+  {{- with .Text | safeHTML }}{{ . }}{{ end -}}
+
+  {{- if $outer -}}
+  {{- " " -}}<span style="position:relative;">{{- "" -}}
+      <span style="">&#x2610;</span>{{- "" -}}
+      <span style="position:absolute; top:-0.3em; left:0.2em">&#x2197;</span>{{- "" -}}
+  </span>
+  {{- end -}}
+</a>
+{{- /* chomp trailing newline */ -}}
+
