@@ -7,7 +7,6 @@
         {{ range (.Paginator 5).Pages -}}
             {{ partial "listitem.html" . }}
         {{ end }}
-        <!-- {{ template "_internal/pagination.html" . }} -->
     </ul>
     {{ partial "pagination.html" . }}
 </div>
