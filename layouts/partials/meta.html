@@ -6,9 +6,9 @@
 <meta name="description" content="{{ .Site.Params.description }}">
 {{- end -}}
 
-{{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
-{{ end }}
+{{- with .OutputFormats.Get "RSS" -}}
+<link rel="alternate" type="application/atom+xml" href="{{ .RelPermalink }}" />
+{{- end -}}
 
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
