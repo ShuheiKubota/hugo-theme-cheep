@@ -263,6 +263,30 @@ p ~ {
   }
 }
 
+.highlight {
+  position: relative;
+}
+.highlight .copy {
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 0;
+
+  backdrop-filter: blur(50px) invert(30%);
+  background-color: var(--bgcolor);
+
+  filter: grayscale(100%);
+  font-color: var(--color);
+  font-size: small;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: none;
+  margin: 5px;
+  padding: 3px;
+}
+
 /* modify hugo gen */
 
 li > p {

@@ -28,3 +28,17 @@ function replaceSince(spanElem) {
 
     spanElem.firstChild.data = "now";
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.highlight').forEach((e) => {
+        var text = ''
+        e.querySelectorAll('span.line').forEach((line) => text += line.textContent)
+        //console.log(text)
+
+        let btn = document.createElement('a')
+        btn.append('copy')
+        btn.setAttribute('class', 'copy')
+        btn.addEventListener('click', (be) => navigator.clipboard.writeText(text))
+        e.appendChild(btn)
+    })
+})
