@@ -235,8 +235,10 @@ p ~ {
     line-height: 1em;
     margin-left: 2em;
     padding: 0.5ex;
-    background: var(--pre_bgcolor); //#f7f7f7;
     border: solid thin var(--main_border_color);
+    .chroma {
+      background: var(--pre_bgcolor);
+    }
   }
 }
 
