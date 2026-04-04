@@ -31,6 +31,7 @@ $colors: (
     tag_color: darken($cheep_white, 3%),
     tag_marker_color: darken($cheep_white, 13%),
     code_hl: mix($cheep_white, rgb(255,255,0),75%),
+    may_be_outdated: mix($cheep_white, rgb(255, 0,0), 90%)
   ),
   dark: (
     bgcolor: $cheep_black,
@@ -54,6 +55,7 @@ $colors: (
     tag_color: lighten($cheep_black, 5%),
     tag_marker_color: lighten($cheep_black, 25%),
     code_hl: mix($cheep_black, rgb(255,255,0),75%),
+    may_be_outdated: mix($cheep_black, rgb(255, 0,0), 80%)
   ),
 );
 
@@ -538,6 +540,15 @@ hr.listsep {
   a {
     text-decoration-line: none;
   }
+}
+
+.may_be_outdated:not(:empty) {
+  margin-top: 1em;
+  background-color: var(--may_be_outdated);
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 @media (prefers-color-scheme: dark) {
