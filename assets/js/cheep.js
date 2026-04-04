@@ -3,7 +3,7 @@ function replaceSince(spanElem) {
     var mod = new Date(v)
 
     var s = since(new Date(Date.now()), new Date(v))
-    console.log(s)
+    //console.log(s)
 
     var expr = "now"
     if (s.years) {
@@ -48,7 +48,7 @@ function since(now, dt) {
     }
 
     d %= 24 * 60 * 60 * 1000
-    console.log('d', d)
+    //console.log('d', d)
 
     if (d >= 60 * 60 * 1000) {
         s = {...(s||{}), hours: Math.floor(d / (60 * 60 * 1000))}
@@ -103,6 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.innerHTML = '最終更新日から ' + over + ' 以上が経過しています。<br/>内容が古くなっている可能性があるのでご注意ください。'
         }
 
-        console.log('debug' , 'data', e.innerHTML)
+        //console.log('debug' , 'data', e.innerHTML)
     })
 })
