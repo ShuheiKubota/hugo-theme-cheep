@@ -267,7 +267,7 @@ p ~ {
 }
 
 .main-area >, details > {
-  p {
+  p, details {
     margin-left: 2em;
     line-height: 175%;
   }
@@ -288,6 +288,10 @@ p ~ {
       background: var(--pre_bgcolor);
     }
   }
+}
+
+figcaption p {
+  margin: 0px;
 }
 
 .folding {
