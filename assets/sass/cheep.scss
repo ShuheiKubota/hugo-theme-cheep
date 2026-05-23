@@ -5,6 +5,12 @@ $cheep_white: rgb(240, 240, 240);
 $cheep_black: rgb(45, 45, 45);
 $cheep_dimmed_white: darken($cheep_white, 20%);
 
+$cheep_alert_note: rgb(128, 128, 128);
+$cheep_alert_tip: hsl(120, 50%, 50%);
+$cheep_alert_important: hsl(180, 50%, 50%);
+$cheep_alert_warning: hsl(60, 50%, 50%);
+$cheep_alert_caution: hsl(0, 50%, 50%);
+
 $cheep_blue: rgb(25, 113, 255);
 $cheep_red: rgb(255, 75, 0);
 
@@ -31,7 +37,27 @@ $colors: (
     tag_color: darken($cheep_white, 3%),
     tag_marker_color: darken($cheep_white, 13%),
     code_hl: mix($cheep_white, rgb(255,255,0),75%),
-    may_be_outdated: mix($cheep_white, rgb(255, 0,0), 90%)
+    may_be_outdated: mix($cheep_white, rgb(255, 0,0), 90%),
+    alert_note_border_color: mix($cheep_white, rgb(200, 200, 200), 50%),
+    alert_note_bgcolor: mix($cheep_white, $cheep_black, 95%),
+    alert_note_heading_color: mix($cheep_black, $cheep_white, 40%),
+    alert_note_color: mix($cheep_black, $cheep_white, 80%),
+    alert_tip_border_color: mix($cheep_white, $cheep_alert_tip, 50%),
+    alert_tip_bgcolor: mix($cheep_white, $cheep_alert_tip, 95%),
+    alert_tip_heading_color: mix(mix($cheep_alert_tip, $cheep_black, 75%), $cheep_white, 85%),
+    alert_tip_color: mix($cheep_black, $cheep_white, 80%),
+    alert_important_border_color: mix($cheep_white, $cheep_alert_important, 50%),
+    alert_important_bgcolor: mix($cheep_white, $cheep_alert_important, 95%),
+    alert_important_heading_color: mix(mix($cheep_alert_important, $cheep_black, 75%), $cheep_white, 85%),
+    alert_important_color: mix($cheep_black, $cheep_white, 80%),
+    alert_warning_border_color: mix($cheep_white, $cheep_alert_warning, 50%),
+    alert_warning_bgcolor: mix($cheep_white, $cheep_alert_warning, 95%),
+    alert_warning_heading_color: mix(mix($cheep_alert_warning, $cheep_black, 75%), $cheep_white, 85%),
+    alert_warning_color: mix($cheep_black, $cheep_white, 80%),
+    alert_caution_border_color: mix($cheep_white, $cheep_alert_caution, 50%),
+    alert_caution_bgcolor: mix($cheep_white, $cheep_alert_caution, 95%),
+    alert_caution_heading_color: mix(mix($cheep_alert_caution, $cheep_black, 75%), $cheep_white, 85%),
+    alert_caution_color: mix($cheep_black, $cheep_white, 80%),
   ),
   dark: (
     bgcolor: $cheep_black,
@@ -55,7 +81,27 @@ $colors: (
     tag_color: lighten($cheep_black, 5%),
     tag_marker_color: lighten($cheep_black, 25%),
     code_hl: mix($cheep_black, rgb(255,255,0),75%),
-    may_be_outdated: mix($cheep_black, rgb(255, 0,0), 80%)
+    may_be_outdated: mix($cheep_black, rgb(255, 0,0), 80%),
+    alert_note_border_color: mix($cheep_black, rgb(200, 200, 200), 50%),
+    alert_note_bgcolor: mix($cheep_black, $cheep_white, 95%),
+    alert_note_heading_color: mix($cheep_white, $cheep_black, 50%),
+    alert_note_color: mix($cheep_white, $cheep_black, 80%),
+    alert_tip_border_color: mix($cheep_black, $cheep_alert_tip, 50%),
+    alert_tip_bgcolor: mix($cheep_black, $cheep_alert_tip, 95%),
+    alert_tip_heading_color: mix(mix($cheep_alert_tip, $cheep_white, 75%), $cheep_white, 85%),
+    alert_tip_color: mix($cheep_white, $cheep_black, 80%),
+    alert_important_border_color: mix($cheep_black, $cheep_alert_important, 50%),
+    alert_important_bgcolor: mix($cheep_black, $cheep_alert_important, 95%),
+    alert_important_heading_color: mix(mix($cheep_alert_important, $cheep_white, 75%), $cheep_white, 85%),
+    alert_important_color: mix($cheep_white, $cheep_black, 80%),
+    alert_warning_border_color: mix($cheep_black, $cheep_alert_warning, 50%),
+    alert_warning_bgcolor: mix($cheep_black, $cheep_alert_warning, 95%),
+    alert_warning_heading_color: mix(mix($cheep_alert_warning, $cheep_white, 75%), $cheep_white, 85%),
+    alert_warning_color: mix($cheep_white, $cheep_black, 80%),
+    alert_caution_border_color: mix($cheep_black, $cheep_alert_caution, 50%),
+    alert_caution_bgcolor: mix($cheep_black, $cheep_alert_caution, 95%),
+    alert_caution_heading_color: mix(mix($cheep_alert_caution, $cheep_white, 75%), $cheep_white, 85%),
+    alert_caution_color: mix($cheep_white, $cheep_black, 80%),
   ),
 );
 
@@ -549,6 +595,61 @@ hr.listsep {
   padding-right: 2em;
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+blockquote /*.alert*/ {
+  margin-left: 5em;
+  margin-right: 5em;
+  
+  padding-left: 1em;
+  padding-right: 1em;
+
+  .alert-heading {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    font-size: large;
+    font-weight: 300;
+  }
+  &.alert p:not(.alert-heading) {
+    margin-top: 0;
+    padding-left: 1em;
+  }
+}
+
+blockquote:not(.alert) {
+  border: thin solid var(--alert_note_border_color);
+  color: var(--alert_note_color);
+  background-color: var(--alert_note_bgcolor);
+}
+
+@mixin alert($kind) {
+  border: thin solid var(--alert_#{$kind}_border_color);
+  color: var(--alert_#{$kind}_color);
+  background-color: var(--alert_#{$kind}_bgcolor);
+
+  .alert-heading {
+    color: var(--alert_#{$kind}_heading_color);
+  }
+}
+
+.alert-note {
+  @include alert(note);
+}
+
+.alert-tip {
+  @include alert(tip);
+}
+
+.alert-important {
+  @include alert(important);
+}
+
+.alert-warning {
+  @include alert(warning);
+}
+
+.alert-caution {
+  @include alert(caution);
 }
 
 @media (prefers-color-scheme: dark) {
