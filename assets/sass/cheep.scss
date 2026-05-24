@@ -267,8 +267,12 @@ p ~ {
 }
 
 .main-area >, details > {
-  p, details {
+  *:not(h1,h2,h3,h4,h5,h6, span.lastmod, span.lastmod + *) {
     margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  p {
     line-height: 175%;
   }
 
