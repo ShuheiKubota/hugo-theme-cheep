@@ -266,13 +266,16 @@ p ~ {
   }
 }
 
-.main-area >, details > {
-  *:not(h1,h2,h3,h4,h5,h6, span.lastmod, span.lastmod + *) {
-    margin-left: 2em;
-    margin-right: 2em;
+.main-area > {
+  *:not(h1,h2,h3,h4,h5,h6, span.lastmod, span.lastmod + *, p, ul, ol) {
+    margin-left: 3em;
+    margin-right: 3em;
   }
 
-  p {
+  p, ul, ol {
+    margin-left: 2em;
+    margin-right: 2em;
+
     line-height: 175%;
   }
 
@@ -295,6 +298,25 @@ p ~ {
       table.lntable td:nth-child(2) {
         width: 100%;
       }
+    }
+  }
+
+  blockquote /*.alert*/ {
+    margin-left: 5em;
+    margin-right: 5em;
+
+    padding-left: 1em;
+    padding-right: 1em;
+
+    .alert-heading {
+      margin-top: 0.5em;
+      margin-bottom: 0;
+      font-size: large;
+      font-weight: 300;
+    }
+    &.alert p:not(.alert-heading) {
+      margin-top: 0;
+      padding-left: 1em;
     }
   }
 }
@@ -610,24 +632,6 @@ hr.listsep {
   padding-bottom: 1em;
 }
 
-blockquote /*.alert*/ {
-  margin-left: 5em;
-  margin-right: 5em;
-  
-  padding-left: 1em;
-  padding-right: 1em;
-
-  .alert-heading {
-    margin-top: 0.5em;
-    margin-bottom: 0;
-    font-size: large;
-    font-weight: 300;
-  }
-  &.alert p:not(.alert-heading) {
-    margin-top: 0;
-    padding-left: 1em;
-  }
-}
 
 blockquote:not(.alert) {
   border: thin solid var(--alert_note_border_color);
