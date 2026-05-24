@@ -288,8 +288,13 @@ p ~ {
     margin-left: 2em;
     padding: 0.5ex;
     border: solid thin var(--main_border_color);
-    .chroma {
+    > .chroma {
       background: var(--pre_bgcolor);
+      overflow-x: scroll;
+
+      table.lntable td:nth-child(2) {
+        width: 100%;
+      }
     }
   }
 }
