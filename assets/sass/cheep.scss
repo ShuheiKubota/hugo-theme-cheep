@@ -395,8 +395,8 @@ li > p {
 #TableOfContents {
   &:before {
     display: block;
-    padding: 1ex;
-    content: "TOC";
+    padding: 0.5em;
+    content: "Contents";
     font-weight: bold;
     background-color: var(--band_bgcolor);
     color: var(--band_color);
@@ -404,24 +404,28 @@ li > p {
 
   border: thin solid var(--side_border_color);
 
-  ul {
-    margin: 0;
+  padding: 0.5em;
 
+  > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul {
     ul ul {
       display: none;
     }
   }
 
-  > ul {
-    list-style-type: none;
-    padding: 0;
-  }
   li {
-    padding-left: 1em;
-    padding-right: 1em;
     padding-top: 0.1em;
     padding-bottom: 0.1em;
   }
+}
+
+#TableOfContents:empty {
+  display: none;
 }
 
 /* hide h3~ links */
