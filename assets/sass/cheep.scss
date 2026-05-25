@@ -80,7 +80,7 @@ $colors: (
     latest_summary_color: lightgray,
     tag_color: lighten($cheep_black, 5%),
     tag_marker_color: lighten($cheep_black, 25%),
-    code_hl: mix($cheep_black, rgb(255,255,0),75%),
+    code_hl: mix($cheep_black, rgb(255,255,0),95%),
     may_be_outdated: mix($cheep_black, rgb(255, 0,0), 80%),
     alert_note_border_color: mix($cheep_black, rgb(200, 200, 200), 50%),
     alert_note_bgcolor: mix($cheep_black, $cheep_white, 95%),
